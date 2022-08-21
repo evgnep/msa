@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "ru.otus.grpc.proto";
+
+package book;
+
+service BookService {
+  rpc CreateBook (Book) returns (Empty) {}
+
+  rpc NewBooks (Empty) returns (stream Book) {}
+}
+
+message Empty {}
+
+message Book {
+  string name = 1;
+}

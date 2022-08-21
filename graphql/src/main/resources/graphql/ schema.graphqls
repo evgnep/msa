@@ -1,0 +1,26 @@
+type Query {
+    greeting: String!
+    error: String!
+    books: [Book!]!
+    authorsLike(like: String): [Author!]!
+}
+
+type Mutation {
+    createAuthor(name: String!): Author!
+    createBook(name: String!, year: Int!): Book!
+}
+
+type Book {
+    id: Int!
+    name: String!
+    year: Int!
+
+    authors: [Author!]!
+    authorsN1: [Author!]!
+}
+
+type Author {
+    id: Int!
+    name: String!
+    books: [Book!]!
+}

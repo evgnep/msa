@@ -1,0 +1,126 @@
+{
+    greeting
+}
+
+{
+    error
+}
+
+{
+    books {
+        name
+    }
+}
+
+{
+    books {
+        id
+        name
+        year
+    }
+}
+
+{
+    books {
+        name
+        authors {
+            name
+        }
+    }
+}
+
+{
+    books {
+        name
+        authorsN1 {
+            name
+        }
+    }
+}
+
+{
+    books {
+        name
+        authorsN1 {
+            name
+            books {
+                name
+                authorsN1 {
+                    name
+                }
+            }
+        }
+    }
+}
+
+{
+    authorsLike(like: "Б%") {
+        name,
+        books {
+            name
+        }
+    }
+}
+
+query authorsAnsBooks($pref: String){
+    authorsLike(like: $pref) {
+        name,
+        books {
+            name
+        }
+    }
+}
+
+{
+    authors1: authorsLike(like: "Б%") {
+        name
+    }
+
+    authors2: authorsLike(like: "%С%") {
+        name
+    }
+}
+
+#####
+{
+    authors1: authorsLike(like: "Б%") {
+        ...authorBooks
+    }
+
+    authors2: authorsLike(like: "%С%") {
+        ...authorBooks
+    }
+}
+
+fragment authorBooks on Author {
+    name
+    books {
+        name
+    }
+}
+##########
+
+query authorsAndBook($pattern: String) {
+    authorsLike(like: $pattern) {
+        name,
+        books {
+            name
+        }
+    }
+}
+
+
+mutation {
+    createAuthor(name: "Иванов") {
+        id
+        name
+    }
+}
+
+mutation {
+    createBook(name:"test", year:1997) {
+        id
+        name
+    }
+}
+

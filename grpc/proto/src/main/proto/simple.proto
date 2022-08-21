@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "ru.otus.grpc.proto";
+
+package simple;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  rpc Calculate (CalculateRequest) returns (CalculateResponse) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+
+enum Operation {
+  PLUS = 0;
+  MINUS = 1;
+}
+
+message CalculateRequest {
+  Operation operation = 1;
+  double a = 2;
+  double b = 3;
+}
+
+message CalculateResponse {
+  double result = 1;
+}
+
