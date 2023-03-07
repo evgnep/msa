@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: metrics-demo
+  labels:
+    app: metrics-demo
+  #annotations:
+   # prometheus.io/scrape: "true"
+    #prometheus.io/path: /actuator/prometheus
+    #prometheus.io/port: "8090"
+spec:
+  containers:
+  - name: metrics-demo
+    image: metrics-demo:v1
+    ports:
+      - containerPort: 8090
+

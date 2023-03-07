@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: metrics-demo-monitor
+  labels:
+    app: metrics-demo-monitor
+    
+spec:
+  endpoints:
+    - port: metrics
+      scrapeTimeout: 30s
+      path: /actuator/prometheus     
+      honorLabels: true
+      scheme: http
+#  jobLabel: stack
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      app: metrics-demo
+  

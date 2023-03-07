@@ -1,0 +1,18 @@
+server:
+  port: 8090
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    distribution:
+      slo:
+        http.server.requests: 10ms, 50ms, 100ms, 200ms, 300ms, 400ms, 500ms
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"

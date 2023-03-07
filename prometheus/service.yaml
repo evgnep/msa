@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: metrics-demo
+  labels:
+    app: metrics-demo
+spec:
+  selector:
+    app: metrics-demo
+  ports:
+    - protocol: TCP
+      name: metrics
+      port: 8090
+      targetPort: 8090

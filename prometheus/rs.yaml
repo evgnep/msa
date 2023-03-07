@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: metrics-rs-demo
+  labels:
+    app: metrics-demo
+spec:
+    replicas: 2
+    selector:
+       matchLabels:
+          app: metrics-demo
+    template:
+       metadata:
+          labels:
+            app: metrics-demo
+       spec:
+          containers:
+          - name: metrics-demo
+            image: metrics-demo:v1
+            ports:
+              - containerPort: 8090
+
