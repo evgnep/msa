@@ -8,14 +8,15 @@ import kotlin.random.Random
 class Controller {
     private val random = Random(42)
 
-    private fun doSomething(res: String): String {
-        Thread.sleep(random.nextLong(0, 300))
-        return res;
+    private fun doSomething(res: String, from: Int, to: Int): String {
+        val timeout = random.nextLong(from.toLong(), to.toLong())
+        Thread.sleep(timeout)
+        return "$res: $timeout"
     }
 
     @GetMapping("/api/a")
-    fun method1() = doSomething("method1");
+    fun method1() = doSomething("method1", 0, 300)
 
     @GetMapping("/api/b")
-    fun method2() = doSomething("method2");
+    fun method2() = doSomething("method2", 200, 400)
 }

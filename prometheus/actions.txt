@@ -1,3 +1,8 @@
+http://localhost:8090/actuator/prometheus
+http://localhost:8090/api/a
+http://localhost:8090/api/b
+
+
 minikube.exe start
 minikube dashboard
 

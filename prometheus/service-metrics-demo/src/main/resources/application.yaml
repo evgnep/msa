@@ -8,7 +8,7 @@ management:
   metrics:
     distribution:
       slo:
-        http.server.requests: 10ms, 50ms, 100ms, 200ms, 300ms, 400ms, 500ms
+        http.server.requests: 10ms, 50ms, 100ms, 200ms, 300ms, 400ms, 500ms, 600ms, 800ms
     export:
       prometheus:
         enabled: true
