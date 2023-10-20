@@ -1,0 +1,35 @@
+### Token by password
+POST http://localhost:8081/auth/realms/otus-marketplace/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=otus-marketplace-service&grant_type=password&username=ivan&password=1234
+
+> {% client.global.set("auth_token", response.body.access_token);
+    client.global.set("refresh_token", response.body.refresh_token); %}
+
+### Token by refresh token
+POST http://localhost:8081/auth/realms/otus-marketplace/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=otus-marketplace-service&grant_type=refresh_token&refresh_token={{refresh_token}}
+
+
+### Create
+POST http://127.0.0.1:8080/v1/ad/create
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "requestType": "create",
+  "requestId": "12345",
+  "ad": {
+    "title": "Болт",
+    "description": "КРУТЕЙШИЙ",
+    "ownerId": "9435",
+    "visibility": "public",
+    "adType": "demand"
+  },
+  "debug": {
+    "mode": "test"
+  }
+}
