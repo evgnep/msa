@@ -11,6 +11,8 @@ class Controller {
     private fun doSomething(res: String, from: Int, to: Int): String {
         val timeout = random.nextLong(from.toLong(), to.toLong())
         Thread.sleep(timeout)
+        val error = random.nextInt(10)
+        if (error > 8) throw RuntimeException("Error $error")
         return "$res: $timeout"
     }
 

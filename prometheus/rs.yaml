@@ -16,7 +16,7 @@ spec:
        spec:
           containers:
           - name: metrics-demo
-            image: metrics-demo:v2
+            image: metrics-demo:v1
             ports:
               - containerPort: 8090
 

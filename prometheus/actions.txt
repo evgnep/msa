@@ -4,6 +4,8 @@ http://localhost:8090/api/b
 
 
 minikube.exe start
+minikube start --driver=virtualbox --no-vtx-check
+
 minikube dashboard
 
 
@@ -46,7 +48,8 @@ kubectl port-forward service/prometheus-operated  9090
 
 ab -n 500 -c 50 http://localhost:8090/api/a # поменять урл на реальный (выхлоп minikube.exe service metrics-demo)
 
-FOR /L %N IN () DO c:\data\otus\msa\Apache24\bin\ab.exe -n 50 -c 10 http://localhost:8090/api/a # аналогично поменять урл
+// c:\data\otus\msa\Apache24\bin\ab.exe
+FOR /L %N IN () DO ab.exe -n 50 -c 10 http://192.168.59.100:32133/api/a # аналогично поменять урл
 
 
 ----
